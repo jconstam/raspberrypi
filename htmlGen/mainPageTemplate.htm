@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi?autoload={{'modules':[{{'name':'visualization','version':'1','packages':['annotationchart']}}]}}"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {{'packages':['annotationchart']}});
+      google.setOnLoadCallback(drawChart);
+
+      window.onresize = function( event )
+      {{
+          drawChart( );
+      }}
+
+      // Callback that creates and populates a data table, 
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {{
+
+      // Create the data table.
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Time');
+      data.addColumn('number', 'Temperature');
+      data.addColumn('number', 'CPU Usage');
+      data.addRows([
+{data}
+      ]);
+
+      var width = window.innerWidth * 0.98
+
+      // Set chart options
+      var options = {{
+		'title':	'Raspberry Pi System Info',
+          	'width':	width,
+               	'height':	600,
+		'scaleColumns':	[0,1],
+		'scaleType':	'allMaximized'
+		}};
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.AnnotationChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }}
+    </script>
+    <title>Raspberry Pi Home</title>
+  </head>
+
+  <body>
+    <h1>Raspberry Pi</h1>
+	<p>
+		{date} {time}
+	</p>
+	<p>
+		System Info: {sysinfo}
+	</p>
+    <div id="chart_div" style="width:800; height:300"></div>
+  </body>
+</html>
