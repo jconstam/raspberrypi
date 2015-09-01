@@ -40,8 +40,10 @@ def getTemperatureData( ):
 			fileReader = csv.reader( csvfile, delimiter=',' )
 			fileReader.next()
 			for row in fileReader:
-				data += "\t\t[ new Date( {0}, {1}, {2}, {3} ), {4}, {5} ],\n".format(
-					currdate.strftime( "%Y, %m, %d" ),
+				data += "\t\t[ new Date( {0}, {1}, {2}, {3}, {4}, {5} ), {6}, {7} ],\n".format(
+					currdate.strftime( "%Y" ),
+					int( currdate.strftime( "%m" ) ) - 1,
+					currdate.strftime( "%d" ),
 					row[ 0 ][ 0:2 ],
 					row[ 0 ][ 3:5 ],
 					row[ 0 ][ 6:8 ],
