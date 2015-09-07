@@ -58,3 +58,4 @@ target/
 
 # SysLogs
 sysLogs/SysLog_*
+sysLogs/ArchivedSysLogs.tar.gz
